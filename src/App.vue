@@ -1,28 +1,30 @@
 <template>
   <div id="app">
+    <CloudImage path="folder/myfile.gif"/>
+    <CloudImage path="folder/dog.jpeg"/>
+    <CloudImage path="folder/myfile.gif"/>
   <input type="file" ref="myfile">
-  <button @click="upload">upload</button> 
+  <button @click="upload">upload</button>
   </div>
 </template>
 
 <script>
-import { storage } from "./firebase"
-import { ref,uploadBytes } from "firebase/storage"
+import  { storage } from "./firebase"
+import  { ref,uploadBytes } from "firebase/storage"
+import  CloudImage  from './components/CloudImage.vue'
 
 export default {
   name: 'App',
   components: {
-    
+    CloudImage
   },
   methods:{
     upload: function() {
-      const: storageRef = ref(storage, 'folder/myfile.gif');
-      uploadBytes(storageRef, this.$refs.myfile.files[0]).then(
-        (snapshot)=> {
-          console.log("uploaded")
-        })
+      const storageRef = ref(storage, 'folder/myfile.gif');
+      uploadBytes(storageRef,this.$refs.myfile.files[0]).then((snapshot)=> {
+        console.log("uploaded")
+      })
     }
-
   }
 }
 </script>
