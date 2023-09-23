@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <CloudImage path="folder/myfile.gif"/>
-    <CloudImage path="folder/dog.jpeg"/>
-    <CloudImage path="folder/myfile.gif"/>
+    <CloudImage path="folder/profile.png"/>
   <input type="file" ref="myfile">
   <button @click="upload">upload</button>
   </div>
@@ -20,7 +18,7 @@ export default {
   },
   methods:{
     upload: function() {
-      const storageRef = ref(storage, 'folder/myfile.gif');
+      const storageRef = ref(storage, 'folder/profile.png');
       uploadBytes(storageRef,this.$refs.myfile.files[0]).then((snapshot)=> {
         console.log("uploaded")
       })
