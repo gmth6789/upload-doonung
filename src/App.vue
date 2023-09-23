@@ -1,17 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="https://vuejs.org/images/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <input type="file" ref="myfile">
+  <button @click="upload">upload</button> 
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { storage } from "./firebase"
+import { ref,uploadBytes } from "firebase/storage"
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    
+  },
+  methods:{
+    upload: function() {
+      const: storageRef = ref(storage, 'folder/myfile.png');
+      uploadBytes(storageRef, this.$refs.myfile.files[0]).then(
+        (snapshot)=> {
+          console.log("uploaded")
+        })
+    }
+
   }
 }
 </script>
