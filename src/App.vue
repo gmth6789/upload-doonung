@@ -16,7 +16,7 @@ export default {
   },
   methods:{
     upload: function() {
-      const: storageRef = ref(storage, 'folder/myfile.png');
+      const: storageRef = ref(storage, 'folder/myfile.gif');
       uploadBytes(storageRef, this.$refs.myfile.files[0]).then(
         (snapshot)=> {
           console.log("uploaded")
